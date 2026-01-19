@@ -1,0 +1,62 @@
+import { useState } from "react";
+import { Upload } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+
+// NOTE: Replace `logoBg` with your actual background/logo image file
+import logoBg from "./bakenovation-bg.jpg";
+import logo from "./bakenovation-logo.png";
+
+export default function BakenovationHome() {
+  const [file, setFile] = useState(null);
+
+  return (
+    <div
+      className="min-h-screen bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: `url(${logoBg})` }}
+    >
+      {/* Header */}
+      <header className="backdrop-blur-sm bg-white/10">
+        <div className="max-w-7xl mx-auto p-4 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <img src={logo} alt="Bakenovation" className="h-12 w-12 rounded-full" />
+            <h1 className="text-2xl font-bold text-white">Bakenovation</h1>
+          </div>
+          <nav className="hidden md:flex gap-6 text-white">
+            <a href="#customize" className="hover:underline">Customize</a>
+            <a href="#gallery" className="hover:underline">Gallery</a>
+            <a href="#order" className="hover:underline">Order</a>
+          </nav>
+        </div>
+      </header>
+
+      {/* Hero Section */}
+      <section className="max-w-7xl mx-auto px-4 py-24 text-center">
+        <Card className="inline-block bg-white/80 backdrop-blur-md rounded-2xl shadow-xl">
+          <CardContent className="p-8">
+            <h2 className="text-4xl font-extrabold mb-4">Design Your Dream Cake</h2>
+            <p className="max-w-xl mx-auto mb-6">
+              A fully customized baking experience where you design, preview, and order your perfect cake.
+            </p>
+            <Button size="lg">Start Customizing</Button>
+          </CardContent>
+        </Card>
+      </section>
+
+      {/* Customization Section */}
+      <section id="customize" className="max-w-7xl mx-auto px-4 py-16">
+        <Card className="bg-white/90 backdrop-blur-md rounded-2xl shadow-lg">
+          <CardContent className="p-8 grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 className="text-2xl font-bold mb-4">Customize It Your Way</h3>
+              <ul className="space-y-2 list-disc ml-5">
+                <li>Choose size, flavor, and layers</li>
+                <li>Select icing style and colors</li>
+                <li>Add text, toppers, and decorations</li>
+                <li>Real-time preview before checkout</li>
+              </ul>
+              <Button className="mt-6">Open Custom Builder</Button>
+            </div>
+
+            {/* Image Upload (Buy Same Cake) */}
+            <div id="order" className="border-2 border-dashed rounded-2xl p-6 text-center">
