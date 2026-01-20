@@ -3,66 +3,87 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Custom Cake Builder</title>
+<title>Custom Cake Studio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, sans-serif;
+    font-family:'Poppins', sans-serif;
 }
 
 body{
-    background:#fff0f5;
+    background:#f7f3f5;
 }
 
+/* ===== HEADER ===== */
 header{
-    background:#ff6f61;
-    color:white;
-    text-align:center;
-    padding:20px;
+    background:white;
+    padding:20px 80px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 2px 10px rgba(0,0,0,0.05);
 }
 
-nav{
-    display:flex;
-    justify-content:center;
-    gap:30px;
-    background:#ff9aa2;
-    padding:15px;
+.logo{
+    font-size:22px;
+    font-weight:600;
+    color:#ff6f61;
 }
 
 nav a{
-    color:white;
+    margin-left:25px;
     text-decoration:none;
-    font-weight:bold;
+    color:#333;
+    font-weight:500;
 }
 
+/* ===== HERO BANNER ===== */
+.hero{
+    background:linear-gradient(to right, #ff9aa2, #ff6f61);
+    color:white;
+    text-align:center;
+    padding:60px 20px;
+}
+
+.hero h1{
+    font-size:40px;
+}
+
+.hero p{
+    margin-top:10px;
+}
+
+/* ===== MAIN LAYOUT ===== */
 .container{
     max-width:1200px;
-    margin:auto;
-    padding:20px;
+    margin:40px auto;
+    padding:0 20px;
 }
 
 .builder{
     display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
+    grid-template-columns:1.2fr 1fr;
+    gap:30px;
 }
 
-/* Cake Preview */
+/* ===== PREVIEW PANEL ===== */
 .preview{
     background:white;
-    padding:20px;
-    border-radius:10px;
-    box-shadow:0 0 10px rgba(0,0,0,0.1);
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
     text-align:center;
 }
 
 #cakeBox{
-    width:300px;
-    height:300px;
-    margin:auto;
+    width:320px;
+    height:320px;
+    margin:20px auto;
     border:2px dashed #ff6f61;
     display:flex;
     align-items:center;
@@ -72,12 +93,12 @@ nav a{
     transition:0.3s;
 }
 
-/* Options Panel */
+/* ===== OPTIONS PANEL ===== */
 .options{
     background:white;
-    padding:20px;
-    border-radius:10px;
-    box-shadow:0 0 10px rgba(0,0,0,0.1);
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
 }
 
 h2{
@@ -87,35 +108,47 @@ h2{
 
 label{
     display:block;
-    margin-top:10px;
+    margin-top:12px;
+    font-size:14px;
+    color:#555;
 }
 
-select, input, button{
+select, input{
     width:100%;
-    padding:8px;
+    padding:10px;
     margin-top:5px;
-    border-radius:5px;
-    border:1px solid #ccc;
+    border-radius:6px;
+    border:1px solid #ddd;
 }
 
+/* Add-ons grid */
 .addons{
     display:grid;
     grid-template-columns:1fr 1fr;
+    gap:8px;
+    margin-top:10px;
 }
 
+/* Price Box */
 .price-box{
-    background:#ffe0e0;
-    padding:10px;
+    background:#ffe7e7;
+    padding:12px;
     margin-top:15px;
     font-weight:bold;
     text-align:center;
+    border-radius:8px;
 }
 
+/* Button */
 button{
+    width:100%;
     background:#ff6f61;
     color:white;
     border:none;
+    padding:12px;
     font-size:16px;
+    margin-top:15px;
+    border-radius:8px;
     cursor:pointer;
 }
 
@@ -123,19 +156,20 @@ button:hover{
     background:#ff3b2f;
 }
 
-/* Responsive */
-@media(max-width:768px){
+/* ===== FOOTER ===== */
+footer{
+    background:#222;
+    color:white;
+    text-align:center;
+    padding:20px;
+    margin-top:40px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
     .builder{
         grid-template-columns:1fr;
     }
-}
-
-footer{
-    background:#ff6f61;
-    color:white;
-    text-align:center;
-    padding:15px;
-    margin-top:30px;
 }
 </style>
 </head>
@@ -143,22 +177,25 @@ footer{
 <body>
 
 <header>
-<h1>Design Your Custom Cake</h1>
-<p>Create your dream cake online</p>
+<div class="logo">Custom Cake Studio</div>
+<nav>
+<a href="#">Home</a>
+<a href="#">Custom Cakes</a>
+<a href="#">Gallery</a>
+<a href="#">Contact</a>
+</nav>
 </header>
 
-<nav>
-<a href="#">Shape & Flavor</a>
-<a href="#">Decorations</a>
-<a href="#">Add-ons</a>
-<a href="#">Checkout</a>
-</nav>
+<div class="hero">
+<h1>Design Your Dream Cake</h1>
+<p>Create a personalized cake in just a few clicks</p>
+</div>
 
 <div class="container">
 
 <div class="builder">
 
-<!-- LEFT: CAKE PREVIEW -->
+<!-- LEFT: PROFESSIONAL PREVIEW -->
 <div class="preview">
 <h2>Live Cake Preview</h2>
 <div id="cakeBox">Your Cake</div>
@@ -166,11 +203,11 @@ footer{
 <img id="photoPreview" style="max-width:200px; margin-top:10px; display:none;">
 </div>
 
-<!-- RIGHT: CUSTOMIZER -->
+<!-- RIGHT: PROFESSIONAL CUSTOMIZER -->
 <div class="options">
 
 <h2>Step 1: Shape & Size</h2>
-<label>Shape:</label>
+<label>Shape</label>
 <select id="shape">
 <option value="round">Round</option>
 <option value="square">Square</option>
@@ -178,7 +215,7 @@ footer{
 <option value="tiered">Tiered</option>
 </select>
 
-<label>Size:</label>
+<label>Size</label>
 <select id="size">
 <option value="1kg">1 kg</option>
 <option value="1.5kg">1.5 kg</option>
@@ -188,7 +225,7 @@ footer{
 </select>
 
 <h2>Step 2: Flavor</h2>
-<label>Flavor:</label>
+<label>Flavor</label>
 <select id="flavor">
 <option value="chocolate">Chocolate</option>
 <option value="vanilla">Vanilla</option>
@@ -198,13 +235,13 @@ footer{
 </select>
 
 <h2>Step 3: Decorations</h2>
-<label>Add Message:</label>
+<label>Add Message</label>
 <input type="text" id="message" placeholder="Happy Birthday!">
 
-<label>Upload Photo:</label>
+<label>Upload Photo</label>
 <input type="file" id="photo" accept="image/*">
 
-<label>Icing Color:</label>
+<label>Icing Color</label>
 <input type="color" id="color" value="#ffccdd">
 
 <h2>Step 4: Add-ons</h2>
@@ -226,7 +263,7 @@ Total Price: ₹<span id="price">300</span>
 </div>
 
 <footer>
-© 2026 Custom Cake Designer | All Rights Reserved
+© 2026 Custom Cake Studio | All Rights Reserved
 </footer>
 
 <script>
