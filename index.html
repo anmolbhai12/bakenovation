@@ -1,62 +1,175 @@
-import { useState } from "react";
-import { Upload } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Design your own custom cake online. Choose shape, flavor, decoration, and add-ons for birthdays, weddings, anniversaries, and more.">
+  <title>Custom Cake Designer | Bake Your Dream Cake</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Basic Reset */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial', sans-serif; }
 
-// NOTE: Replace `logoBg` with your actual background/logo image file
-import logoBg from "./bakenovation-bg.jpg";
-import logo from "./bakenovation-logo.png";
+    body { background: #fff0f5; color: #333; }
+    header { background: #ff6f61; padding: 20px; color: #fff; text-align: center; }
+    header h1 { font-size: 2rem; }
+    nav { display: flex; justify-content: center; gap: 30px; padding: 15px; background: #ff9aa2; }
+    nav a { text-decoration: none; color: #fff; font-weight: bold; }
+    
+    main { max-width: 1200px; margin: 20px auto; padding: 0 20px; }
+    section { margin-bottom: 50px; }
+    h2 { color: #ff6f61; margin-bottom: 15px; }
+    
+    .customizer { display: flex; flex-wrap: wrap; gap: 20px; }
+    .customizer .preview { flex: 1; min-width: 300px; text-align: center; }
+    .customizer .options { flex: 1; min-width: 300px; }
+    
+    label { display: block; margin: 10px 0 5px; font-weight: bold; }
+    select, input[type="text"], input[type="file"], button { width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ccc; }
+    
+    .cake-preview { width: 300px; height: 300px; border: 2px dashed #ff6f61; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #ff6f61; margin: auto; }
 
-export default function BakenovationHome() {
-  const [file, setFile] = useState(null);
+    .addons { display: flex; gap: 10px; flex-wrap: wrap; }
+    .addons label { flex: 1 1 45%; }
 
-  return (
-    <div
-      className="min-h-screen bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: `url(${logoBg})` }}
-    >
-      {/* Header */}
-      <header className="backdrop-blur-sm bg-white/10">
-        <div className="max-w-7xl mx-auto p-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <img src={logo} alt="Bakenovation" className="h-12 w-12 rounded-full" />
-            <h1 className="text-2xl font-bold text-white">Bakenovation</h1>
-          </div>
-          <nav className="hidden md:flex gap-6 text-white">
-            <a href="#customize" className="hover:underline">Customize</a>
-            <a href="#gallery" className="hover:underline">Gallery</a>
-            <a href="#order" className="hover:underline">Order</a>
-          </nav>
+    .price-summary { background: #ffe0e0; padding: 15px; border-radius: 10px; font-weight: bold; }
+
+    footer { background: #ff6f61; color: #fff; text-align: center; padding: 20px; margin-top: 50px; }
+    
+    @media(max-width: 768px) {
+      .customizer { flex-direction: column; }
+      .cake-preview { width: 100%; height: 250px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <h1>Design Your Custom Cake</h1>
+    <p>Create your dream cake for any occasion!</p>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#shape-flavor">Shape & Flavor</a>
+    <a href="#decorations">Decorations</a>
+    <a href="#addons">Add-Ons</a>
+    <a href="#review">Review & Checkout</a>
+  </nav>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Cake Customizer Section -->
+    <section class="customizer">
+      <div class="preview">
+        <h2>Cake Preview</h2>
+        <div class="cake-preview" id="cakePreview">Your Cake Here</div>
+      </div>
+      <div class="options">
+        <!-- Step 1: Shape & Size -->
+        <h2 id="shape-flavor">Step 1: Shape & Size</h2>
+        <label for="cakeShape">Select Shape:</label>
+        <select id="cakeShape">
+          <option value="round">Round</option>
+          <option value="square">Square</option>
+          <option value="heart">Heart</option>
+          <option value="tiered">Tiered</option>
+          <option value="novelty">Novelty / Custom</option>
+        </select>
+        <label for="cakeSize">Select Size:</label>
+        <select id="cakeSize">
+          <option value="1kg">1 kg (4-6 servings)</option>
+          <option value="1.5kg">1.5 kg (6-8 servings)</option>
+          <option value="2kg">2 kg (8-12 servings)</option>
+          <option value="3kg">3 kg (12-15 servings)</option>
+          <option value="5kg">5 kg (Large Events)</option>
+        </select>
+
+        <!-- Step 2: Flavor -->
+        <h2>Step 2: Flavor & Type</h2>
+        <label for="cakeFlavor">Select Flavor:</label>
+        <select id="cakeFlavor">
+          <option value="chocolate">Chocolate</option>
+          <option value="vanilla">Vanilla</option>
+          <option value="redvelvet">Red Velvet</option>
+          <option value="strawberry">Strawberry</option>
+          <option value="blackforest">Black Forest</option>
+          <option value="pineapple">Pineapple</option>
+        </select>
+        <label for="cakeType">Cake Type:</label>
+        <select id="cakeType">
+          <option value="sponge">Sponge</option>
+          <option value="buttercream">Buttercream</option>
+          <option value="fondant">Fondant</option>
+          <option value="mousse">Mousse</option>
+        </select>
+
+        <!-- Step 3: Decorations -->
+        <h2 id="decorations">Step 3: Decorations</h2>
+        <label for="cakeText">Add Message:</label>
+        <input type="text" id="cakeText" placeholder="Happy Birthday!">
+        <label for="cakePhoto">Upload Photo:</label>
+        <input type="file" id="cakePhoto" accept="image/png, image/jpeg">
+        <label for="cakeColor">Select Icing Color:</label>
+        <input type="color" id="cakeColor" value="#ffccdd">
+
+        <!-- Step 4: Add-Ons -->
+        <h2 id="addons">Step 4: Add-Ons</h2>
+        <div class="addons">
+          <label><input type="checkbox" value="candles"> Candles</label>
+          <label><input type="checkbox" value="balloons"> Balloons</label>
+          <label><input type="checkbox" value="greetingCard"> Greeting Card</label>
+          <label><input type="checkbox" value="ribbon"> Ribbon</label>
         </div>
-      </header>
 
-      {/* Hero Section */}
-      <section className="max-w-7xl mx-auto px-4 py-24 text-center">
-        <Card className="inline-block bg-white/80 backdrop-blur-md rounded-2xl shadow-xl">
-          <CardContent className="p-8">
-            <h2 className="text-4xl font-extrabold mb-4">Design Your Dream Cake</h2>
-            <p className="max-w-xl mx-auto mb-6">
-              A fully customized baking experience where you design, preview, and order your perfect cake.
-            </p>
-            <Button size="lg">Start Customizing</Button>
-          </CardContent>
-        </Card>
-      </section>
+        <!-- Step 5: Review & Checkout -->
+        <h2 id="review">Step 5: Review & Checkout</h2>
+        <div class="price-summary" id="priceSummary">Total Price: ₹0</div>
+        <button id="checkoutBtn">Proceed to Checkout</button>
+      </div>
+    </section>
+  </main>
 
-      {/* Customization Section */}
-      <section id="customize" className="max-w-7xl mx-auto px-4 py-16">
-        <Card className="bg-white/90 backdrop-blur-md rounded-2xl shadow-lg">
-          <CardContent className="p-8 grid md:grid-cols-2 gap-8">
-            <div>
-              <h3 className="text-2xl font-bold mb-4">Customize It Your Way</h3>
-              <ul className="space-y-2 list-disc ml-5">
-                <li>Choose size, flavor, and layers</li>
-                <li>Select icing style and colors</li>
-                <li>Add text, toppers, and decorations</li>
-                <li>Real-time preview before checkout</li>
-              </ul>
-              <Button className="mt-6">Open Custom Builder</Button>
-            </div>
+  <!-- Footer -->
+  <footer>
+    &copy; 2026 Custom Cake Designer. All rights reserved. | Designed with ❤️
+  </footer>
 
-            {/* Image Upload (Buy Same Cake) */}
-            <div id="order" className="border-2 border-dashed rounded-2xl p-6 text-center">
+  <script>
+    // Simple JS to update cake preview and price
+    const cakePreview = document.getElementById('cakePreview');
+    const cakeShape = document.getElementById('cakeShape');
+    const cakeSize = document.getElementById('cakeSize');
+    const cakeFlavor = document.getElementById('cakeFlavor');
+    const cakeColor = document.getElementById('cakeColor');
+    const priceSummary = document.getElementById('priceSummary');
+
+    function updatePreview() {
+      let shape = cakeShape.value;
+      let flavor = cakeFlavor.value;
+      let color = cakeColor.value;
+      cakePreview.textContent = `${shape} ${flavor} cake`;
+      cakePreview.style.backgroundColor = color;
+      calculatePrice();
+    }
+
+    function calculatePrice() {
+      let price = 300; // base
+      switch(cakeSize.value){
+        case '1.5kg': price += 100; break;
+        case '2kg': price += 200; break;
+        case '3kg': price += 350; break;
+        case '5kg': price += 700; break;
+      }
+      if(['redvelvet','blackforest'].includes(cakeFlavor.value)) price += 100;
+      priceSummary.textContent = `Total Price: ₹${price}`;
+    }
+
+    cakeShape.addEventListener('change', updatePreview);
+    cakeSize.addEventListener('change', updatePreview);
+    cakeFlavor.addEventListener('change', updatePreview);
+    cakeColor.addEventListener('input', updatePreview);
+    updatePreview();
+  </script>
+</body>
+</html>
