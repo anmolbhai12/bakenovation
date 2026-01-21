@@ -1,348 +1,1664 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Custom Cake Studio</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins', sans-serif;
-}
-
-body{
-    background image:C:\Users\DELL\Downloads
-}
-
-/* ===== HEADER ===== */
-header{
-    background:white;
-    padding:20px 80px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    box-shadow:0 2px 10px rgba(0,0,0,0.05);
-}
-
-.logo{
-    font-size:22px;
-    font-weight:600;
-    color:#ff6f61;
-}
-
-nav a{
-    margin-left:25px;
-    text-decoration:none;
-    color:#333;
-    font-weight:500;
-}
-
-/* ===== HERO BANNER ===== */
-.hero{
-    background:linear-gradient(to right, #ff9aa2, #ff6f61);
-    color:white;
-    text-align:center;
-    padding:60px 20px;
-}
-
-.hero h1{
-    font-size:40px;
-}
-
-.hero p{
-    margin-top:10px;
-}
-
-/* ===== MAIN LAYOUT ===== */
-.container{
-    max-width:1200px;
-    margin:40px auto;
-    padding:0 20px;
-}
-
-.builder{
-    display:grid;
-    grid-template-columns:1.2fr 1fr;
-    gap:30px;
-}
-
-/* ===== PREVIEW PANEL ===== */
-.preview{
-    background:white;
-    padding:25px;
-    border-radius:12px;
-    box-shadow:0 4px 15px rgba(0,0,0,0.08);
-    text-align:center;
-}
-
-#cakeBox{
-    width:320px;
-    height:320px;
-    margin:20px auto;
-    border:2px dashed #ff6f61;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-weight:bold;
-    border-radius:50%;
-    transition:0.3s;
-}
-
-/* ===== OPTIONS PANEL ===== */
-.options{
-    background:white;
-    padding:25px;
-    border-radius:12px;
-    box-shadow:0 4px 15px rgba(0,0,0,0.08);
-}
-
-h2{
-    color:#ff6f61;
-    margin-bottom:10px;
-}
-
-label{
-    display:block;
-    margin-top:12px;
-    font-size:14px;
-    color:#555;
-}
-
-select, input{
-    width:100%;
-    padding:10px;
-    margin-top:5px;
-    border-radius:6px;
-    border:1px solid #ddd;
-}
-
-/* Add-ons grid */
-.addons{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:8px;
-    margin-top:10px;
-}
-
-/* Price Box */
-.price-box{
-    background:#ffe7e7;
-    padding:12px;
-    margin-top:15px;
-    font-weight:bold;
-    text-align:center;
-    border-radius:8px;
-}
-
-/* Button */
-button{
-    width:100%;
-    background:#ff6f61;
-    color:white;
-    border:none;
-    padding:12px;
-    font-size:16px;
-    margin-top:15px;
-    border-radius:8px;
-    cursor:pointer;
-}
-
-button:hover{
-    background:#ff3b2f;
-}
-
-/* ===== FOOTER ===== */
-footer{
-    background:#222;
-    color:white;
-    text-align:center;
-    padding:20px;
-    margin-top:40px;
-}
-
-/* ===== RESPONSIVE ===== */
-@media(max-width:900px){
-    .builder{
-        grid-template-columns:1fr;
-    }
-}
-</style>
-</head>
-
-<body>
-
-<header>
-<div class="logo">Custom Cake Studio</div>
-<nav>
-<a href="#">Home</a>
-<a href="#">Custom Cakes</a>
-<a href="#">Gallery</a>
-<a href="#">Contact</a>
-</nav>
-</header>
-
-<div class="hero">
-<h1>Design Your Dream Cake</h1>
-<p>Create a personalized cake in just a few clicks</p>
-</div>
-
-<div class="container">
-
-<div class="builder">
-
-<!-- LEFT: PROFESSIONAL PREVIEW -->
-<div class="preview">
-<h2>Live Cake Preview</h2>
-<div id="cakeBox">Your Cake</div>
-<p id="previewText"></p>
-<img id="photoPreview" style="max-width:200px; margin-top:10px; display:none;">
-</div>
-
-<!-- RIGHT: PROFESSIONAL CUSTOMIZER -->
-<div class="options">
-
-<h2>Step 1: Shape & Size</h2>
-<label>Shape</label>
-<select id="shape">
-<option value="round">Round</option>
-<option value="square">Square</option>
-<option value="heart">Heart</option>
-<option value="tiered">Tiered</option>
-</select>
-
-<label>Size</label>
-<select id="size">
-<option value="1kg">1 kg</option>
-<option value="1.5kg">1.5 kg</option>
-<option value="2kg">2 kg</option>
-<option value="3kg">3 kg</option>
-<option value="5kg">5 kg</option>
-</select>
-
-<h2>Step 2: Flavor</h2>
-<label>Flavor</label>
-<select id="flavor">
-<option value="chocolate">Chocolate</option>
-<option value="vanilla">Vanilla</option>
-<option value="redvelvet">Red Velvet</option>
-<option value="strawberry">Strawberry</option>
-<option value="blackforest">Black Forest</option>
-</select>
-
-<h2>Step 3: Decorations</h2>
-<label>Add Message</label>
-<input type="text" id="message" placeholder="Happy Birthday!">
-
-<label>Upload Photo</label>
-<input type="file" id="photo" accept="image/*">
-
-<label>Icing Color</label>
-<input type="color" id="color" value="#ffccdd">
-
-<h2>Step 4: Add-ons</h2>
-<div class="addons">
-<label><input type="checkbox" class="addon" value="50"> Candles (+₹50)</label>
-<label><input type="checkbox" class="addon" value="100"> Balloons (+₹100)</label>
-<label><input type="checkbox" class="addon" value="80"> Greeting Card (+₹80)</label>
-<label><input type="checkbox" class="addon" value="60"> Ribbon (+₹60)</label>
-</div>
-
-<div class="price-box">
-Total Price: ₹<span id="price">300</span>
-</div>
-
-<button onclick="checkout()">Proceed to Checkout</button>
-
-</div>
-</div>
-</div>
-
-<footer>
-© 2026 Custom Cake Studio | All Rights Reserved
-</footer>
-
-<script>
-const cakeBox = document.getElementById("cakeBox");
-const previewText = document.getElementById("previewText");
-const photoPreview = document.getElementById("photoPreview");
-const priceEl = document.getElementById("price");
-
-function updateCake(){
-    let shape = document.getElementById("shape").value;
-    let size = document.getElementById("size").value;
-    let flavor = document.getElementById("flavor").value;
-    let message = document.getElementById("message").value;
-    let color = document.getElementById("color").value;
-
-    cakeBox.style.background = color;
-
-    if(shape === "square"){
-        cakeBox.style.borderRadius = "10px";
-    } else if(shape === "heart"){
-        cakeBox.style.borderRadius = "50% 50% 40% 40%";
-    } else {
-        cakeBox.style.borderRadius = "50%";
-    }
-
-    previewText.innerHTML = 
-    `<b>${size.toUpperCase()} ${flavor.toUpperCase()} ${shape.toUpperCase()} CAKE</b><br>
-    Message: ${message}`;
-
-    calculatePrice();
-}
-
-function calculatePrice(){
-    let base = 300;
-    let size = document.getElementById("size").value;
-
-    if(size === "1.5kg") base += 100;
-    if(size === "2kg") base += 200;
-    if(size === "3kg") base += 350;
-    if(size === "5kg") base += 700;
-
-    let flavor = document.getElementById("flavor").value;
-    if(flavor === "redvelvet" || flavor === "blackforest") base += 100;
-
-    document.querySelectorAll(".addon").forEach(add=>{
-        if(add.checked) base += Number(add.value);
-    });
-
-    priceEl.innerText = base;
-}
-
-document.getElementById("shape").addEventListener("change", updateCake);
-document.getElementById("size").addEventListener("change", updateCake);
-document.getElementById("flavor").addEventListener("change", updateCake);
-document.getElementById("message").addEventListener("input", updateCake);
-document.getElementById("color").addEventListener("input", updateCake);
-
-document.getElementById("photo").addEventListener("change", function(event){
-    const file = event.target.files[0];
-    if(file){
-        const reader = new FileReader();
-        reader.onload = function(e){
-            photoPreview.src = e.target.result;
-            photoPreview.style.display = "block";
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bakenovation - Custom Cake Designer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        reader.readAsDataURL(file);
-    }
-});
 
-document.querySelectorAll(".addon").forEach(add=>{
-    add.addEventListener("change", calculatePrice);
-});
+        :root {
+            --primary-color: #e91e63;
+            --secondary-color: #ff6090;
+            --dark-color: #2c1810;
+            --light-bg: #fff5f8;
+            --text-color: #333;
+            --border-color: #e0e0e0;
+            --success-color: #4caf50;
+        }
 
-function checkout(){
-    alert("Order Placed! Redirecting to Payment...");
-}
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #fff5f8 0%, #ffe8f0 100%);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
 
-updateCake();
-</script>
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            font-size: 2.5rem;
+        }
+
+        .cart-button {
+            background: white;
+            color: var(--primary-color);
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: transform 0.2s;
+        }
+
+        .cart-button:hover {
+            transform: scale(1.05);
+        }
+
+        .cart-count {
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=1600') center/cover;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(233, 30, 99, 0.4);
+        }
+
+        .cta-button:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(233, 30, 99, 0.6);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1400px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        /* Customizer Section */
+        .customizer {
+            display: none;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            margin-bottom: 3rem;
+        }
+
+        .customizer.active {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+
+        .preview-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-right: 1px solid var(--border-color);
+        }
+
+        .cake-preview {
+            width: 100%;
+            max-width: 400px;
+            height: 400px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cake-shape {
+            width: 250px;
+            height: 250px;
+            background: linear-gradient(135deg, #ffd1dc 0%, #ffb3c6 100%);
+            border-radius: 10px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .cake-shape.round {
+            border-radius: 50%;
+        }
+
+        .cake-shape.heart {
+            width: 250px;
+            height: 250px;
+            background: linear-gradient(135deg, #ffd1dc 0%, #ffb3c6 100%);
+            position: relative;
+            transform: rotate(-45deg);
+        }
+
+        .cake-shape.heart::before,
+        .cake-shape.heart::after {
+            content: "";
+            width: 250px;
+            height: 250px;
+            background: linear-gradient(135deg, #ffd1dc 0%, #ffb3c6 100%);
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .cake-shape.heart::before {
+            top: -125px;
+            left: 0;
+        }
+
+        .cake-shape.heart::after {
+            top: 0;
+            left: 125px;
+        }
+
+        .cake-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--dark-color);
+            text-align: center;
+            max-width: 80%;
+            word-wrap: break-word;
+            z-index: 10;
+        }
+
+        .cake-decorations {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 2rem;
+        }
+
+        .price-display {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .price-display h3 {
+            color: var(--dark-color);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .options-section {
+            padding: 3rem;
+            overflow-y: auto;
+            max-height: 800px;
+        }
+
+        .progress-bar {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .progress-bar::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--border-color);
+            z-index: 0;
+        }
+
+        .progress-step {
+            background: white;
+            border: 2px solid var(--border-color);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--text-color);
+            z-index: 1;
+            position: relative;
+        }
+
+        .progress-step.active {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+        }
+
+        .progress-step.completed {
+            background: var(--success-color);
+            border-color: var(--success-color);
+            color: white;
+        }
+
+        .step-content {
+            display: none;
+        }
+
+        .step-content.active {
+            display: block;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .step-title {
+            font-size: 1.8rem;
+            color: var(--dark-color);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .option-group {
+            margin-bottom: 2rem;
+        }
+
+        .option-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: var(--dark-color);
+        }
+
+        .option-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .option-card {
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: white;
+        }
+
+        .option-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(233, 30, 99, 0.2);
+        }
+
+        .option-card.selected {
+            border-color: var(--primary-color);
+            background: var(--light-bg);
+            box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.1);
+        }
+
+        .option-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .option-name {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .option-price {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .input-group input,
+        .input-group textarea,
+        .input-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .input-group input:focus,
+        .input-group textarea:focus,
+        .input-group select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .input-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .file-upload {
+            border: 2px dashed var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .file-upload:hover {
+            border-color: var(--primary-color);
+            background: var(--light-bg);
+        }
+
+        .file-upload input {
+            display: none;
+        }
+
+        .upload-preview {
+            margin-top: 1rem;
+            max-width: 200px;
+            max-height: 200px;
+            margin: 1rem auto 0;
+            border-radius: 8px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(233, 30, 99, 0.3);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--light-bg);
+        }
+
+        /* Cart Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            max-width: 800px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            border-radius: 20px 20px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            font-size: 1.8rem;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .cart-item {
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-item-details h4 {
+            margin-bottom: 0.5rem;
+        }
+
+        .cart-item-details p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .cart-item-price {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .cart-total {
+            border-top: 2px solid var(--border-color);
+            padding-top: 1.5rem;
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-total h3 {
+            font-size: 1.5rem;
+        }
+
+        .cart-total .total-price {
+            font-size: 2rem;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 3rem;
+            color: #999;
+        }
+
+        .empty-cart-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Order Form */
+        .order-form {
+            margin-top: 2rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .success-message {
+            background: var(--success-color);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .success-message h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Features Section */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 0.8rem;
+            color: var(--dark-color);
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 3rem 0 1rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--secondary-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #444;
+            color: #999;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .customizer.active {
+                grid-template-columns: 1fr;
+            }
+
+            .preview-section {
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .option-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <span class="logo-icon">🎂</span>
+                <span>Bakenovation</span>
+            </div>
+            <button class="cart-button" onclick="toggleCart()" data-testid="cart-button">
+                <span>🛒 Cart</span>
+                <span class="cart-count" id="cartCount">0</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="heroSection">
+        <div class="hero-content">
+            <h1>Design Your Dream Cake</h1>
+            <p>Create personalized custom cakes for every special occasion</p>
+            <button class="cta-button" onclick="startCustomization()" data-testid="start-customization-btn">
+                Start Customizing
+            </button>
+        </div>
+    </section>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Customizer Section -->
+        <div class="customizer" id="customizerSection">
+            <!-- Preview Section -->
+            <div class="preview-section">
+                <div class="cake-preview">
+                    <div class="cake-shape" id="cakeShape">
+                        <div class="cake-text" id="cakeText"></div>
+                        <div class="cake-decorations" id="cakeDecorations"></div>
+                    </div>
+                    <img id="photoPreview" style="display:none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 80%; max-height: 80%; border-radius: 10px; object-fit: cover;" />
+                </div>
+                <div class="price-display">
+                    <h3>Total Price</h3>
+                    <div class="price" id="totalPrice">₹500</div>
+                </div>
+            </div>
+
+            <!-- Options Section -->
+            <div class="options-section">
+                <!-- Progress Bar -->
+                <div class="progress-bar">
+                    <div class="progress-step active" data-step="1">1</div>
+                    <div class="progress-step" data-step="2">2</div>
+                    <div class="progress-step" data-step="3">3</div>
+                    <div class="progress-step" data-step="4">4</div>
+                    <div class="progress-step" data-step="5">5</div>
+                </div>
+
+                <!-- Step 1: Shape & Size -->
+                <div class="step-content active" data-step="1">
+                    <h2 class="step-title">🎂 Choose Shape & Size</h2>
+                    
+                    <div class="option-group">
+                        <label>Select Shape:</label>
+                        <div class="option-grid">
+                            <div class="option-card selected" onclick="selectShape('square', this)" data-testid="shape-square">
+                                <div class="option-icon">⬛</div>
+                                <div class="option-name">Square</div>
+                                <div class="option-price">Base</div>
+                            </div>
+                            <div class="option-card" onclick="selectShape('round', this)" data-testid="shape-round">
+                                <div class="option-icon">⚪</div>
+                                <div class="option-name">Round</div>
+                                <div class="option-price">Base</div>
+                            </div>
+                            <div class="option-card" onclick="selectShape('heart', this)" data-testid="shape-heart">
+                                <div class="option-icon">❤️</div>
+                                <div class="option-name">Heart</div>
+                                <div class="option-price">+₹200</div>
+                            </div>
+                            <div class="option-card" onclick="selectShape('rectangle', this)" data-testid="shape-rectangle">
+                                <div class="option-icon">▭</div>
+                                <div class="option-name">Rectangle</div>
+                                <div class="option-price">Base</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="option-group">
+                        <label>Select Size:</label>
+                        <div class="option-grid">
+                            <div class="option-card selected" onclick="selectSize('1kg', 500, this)" data-testid="size-1kg">
+                                <div class="option-icon">🍰</div>
+                                <div class="option-name">1 Kg</div>
+                                <div class="option-price">₹500</div>
+                                <small>Serves 4-6</small>
+                            </div>
+                            <div class="option-card" onclick="selectSize('1.5kg', 700, this)" data-testid="size-1-5kg">
+                                <div class="option-icon">🎂</div>
+                                <div class="option-name">1.5 Kg</div>
+                                <div class="option-price">₹700</div>
+                                <small>Serves 6-8</small>
+                            </div>
+                            <div class="option-card" onclick="selectSize('2kg', 900, this)" data-testid="size-2kg">
+                                <div class="option-icon">🧁</div>
+                                <div class="option-name">2 Kg</div>
+                                <div class="option-price">₹900</div>
+                                <small>Serves 8-12</small>
+                            </div>
+                            <div class="option-card" onclick="selectSize('3kg', 1200, this)" data-testid="size-3kg">
+                                <div class="option-icon">🍮</div>
+                                <div class="option-name">3 Kg</div>
+                                <div class="option-price">₹1200</div>
+                                <small>Serves 12-15</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn btn-primary" onclick="nextStep()" data-testid="next-step-1">Next Step</button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Flavor & Type -->
+                <div class="step-content" data-step="2">
+                    <h2 class="step-title">🍫 Choose Flavor & Type</h2>
+                    
+                    <div class="option-group">
+                        <label>Select Flavor:</label>
+                        <div class="option-grid">
+                            <div class="option-card selected" onclick="selectFlavor('chocolate', 0, '#8B4513', this)" data-testid="flavor-chocolate">
+                                <div class="option-icon">🍫</div>
+                                <div class="option-name">Chocolate</div>
+                                <div class="option-price">Base</div>
+                            </div>
+                            <div class="option-card" onclick="selectFlavor('vanilla', 0, '#F5DEB3', this)" data-testid="flavor-vanilla">
+                                <div class="option-icon">🌼</div>
+                                <div class="option-name">Vanilla</div>
+                                <div class="option-price">Base</div>
+                            </div>
+                            <div class="option-card" onclick="selectFlavor('strawberry', 50, '#FFB6C1', this)" data-testid="flavor-strawberry">
+                                <div class="option-icon">🍓</div>
+                                <div class="option-name">Strawberry</div>
+                                <div class="option-price">+₹50</div>
+                            </div>
+                            <div class="option-card" onclick="selectFlavor('red-velvet', 100, '#DC143C', this)" data-testid="flavor-red-velvet">
+                                <div class="option-icon">❤️</div>
+                                <div class="option-name">Red Velvet</div>
+                                <div class="option-price">+₹100</div>
+                            </div>
+                            <div class="option-card" onclick="selectFlavor('black-forest', 80, '#654321', this)" data-testid="flavor-black-forest">
+                                <div class="option-icon">🍒</div>
+                                <div class="option-name">Black Forest</div>
+                                <div class="option-price">+₹80</div>
+                            </div>
+                            <div class="option-card" onclick="selectFlavor('butterscotch', 70, '#DEB887', this)" data-testid="flavor-butterscotch">
+                                <div class="option-icon">🧈</div>
+                                <div class="option-name">Butterscotch</div>
+                                <div class="option-price">+₹70</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="option-group">
+                        <label>Special Requirements:</label>
+                        <div class="option-grid">
+                            <div class="option-card" onclick="selectType('eggless', 0, this)" data-testid="type-eggless">
+                                <div class="option-icon">🥚</div>
+                                <div class="option-name">Eggless</div>
+                                <div class="option-price">No Extra</div>
+                            </div>
+                            <div class="option-card" onclick="selectType('vegan', 150, this)" data-testid="type-vegan">
+                                <div class="option-icon">🌱</div>
+                                <div class="option-name">Vegan</div>
+                                <div class="option-price">+₹150</div>
+                            </div>
+                            <div class="option-card" onclick="selectType('sugar-free', 100, this)" data-testid="type-sugar-free">
+                                <div class="option-icon">🍯</div>
+                                <div class="option-name">Sugar Free</div>
+                                <div class="option-price">+₹100</div>
+                            </div>
+                            <div class="option-card" onclick="selectType('gluten-free', 120, this)" data-testid="type-gluten-free">
+                                <div class="option-icon">🌾</div>
+                                <div class="option-name">Gluten Free</div>
+                                <div class="option-price">+₹120</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn btn-secondary" onclick="prevStep()" data-testid="prev-step-2">Previous</button>
+                        <button class="btn btn-primary" onclick="nextStep()" data-testid="next-step-2">Next Step</button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Design & Decorations -->
+                <div class="step-content" data-step="3">
+                    <h2 class="step-title">🎨 Design & Decorations</h2>
+                    
+                    <div class="option-group">
+                        <label>Select Theme:</label>
+                        <div class="option-grid">
+                            <div class="option-card" onclick="selectTheme('birthday', '🎉', this)" data-testid="theme-birthday">
+                                <div class="option-icon">🎉</div>
+                                <div class="option-name">Birthday</div>
+                                <div class="option-price">+₹100</div>
+                            </div>
+                            <div class="option-card" onclick="selectTheme('wedding', '💍', this)" data-testid="theme-wedding">
+                                <div class="option-icon">💍</div>
+                                <div class="option-name">Wedding</div>
+                                <div class="option-price">+₹300</div>
+                            </div>
+                            <div class="option-card" onclick="selectTheme('anniversary', '💑', this)" data-testid="theme-anniversary">
+                                <div class="option-icon">💑</div>
+                                <div class="option-name">Anniversary</div>
+                                <div class="option-price">+₹150</div>
+                            </div>
+                            <div class="option-card" onclick="selectTheme('baby-shower', '👶', this)" data-testid="theme-baby-shower">
+                                <div class="option-icon">👶</div>
+                                <div class="option-name">Baby Shower</div>
+                                <div class="option-price">+₹120</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="option-group">
+                        <label>Personalize Message:</label>
+                        <div class="input-group">
+                            <input type="text" id="cakeMessage" placeholder="Enter your message (max 50 characters)" maxlength="50" oninput="updateCakeText()" data-testid="cake-message-input">
+                        </div>
+                    </div>
+
+                    <div class="option-group">
+                        <label>Upload Photo (for Photo Cake):</label>
+                        <div class="file-upload" onclick="document.getElementById('photoUpload').click()">
+                            <input type="file" id="photoUpload" accept="image/*" onchange="handlePhotoUpload(event)">
+                            <div>📸 Click to upload photo</div>
+                            <small>JPEG/PNG, max 5MB</small>
+                        </div>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn btn-secondary" onclick="prevStep()" data-testid="prev-step-3">Previous</button>
+                        <button class="btn btn-primary" onclick="nextStep()" data-testid="next-step-3">Next Step</button>
+                    </div>
+                </div>
+
+                <!-- Step 4: Add-ons -->
+                <div class="step-content" data-step="4">
+                    <h2 class="step-title">✨ Add-ons & Extras</h2>
+                    
+                    <div class="option-group">
+                        <label>Select Add-ons:</label>
+                        <div class="option-grid">
+                            <div class="option-card" onclick="toggleAddon('candles', 50, this)" data-testid="addon-candles">
+                                <div class="option-icon">🕯️</div>
+                                <div class="option-name">Candles</div>
+                                <div class="option-price">+₹50</div>
+                            </div>
+                            <div class="option-card" onclick="toggleAddon('balloons', 100, this)" data-testid="addon-balloons">
+                                <div class="option-icon">🎈</div>
+                                <div class="option-name">Balloons</div>
+                                <div class="option-price">+₹100</div>
+                            </div>
+                            <div class="option-card" onclick="toggleAddon('greeting-card', 80, this)" data-testid="addon-greeting-card">
+                                <div class="option-icon">💌</div>
+                                <div class="option-name">Greeting Card</div>
+                                <div class="option-price">+₹80</div>
+                            </div>
+                            <div class="option-card" onclick="toggleAddon('chocolates', 200, this)" data-testid="addon-chocolates">
+                                <div class="option-icon">🍫</div>
+                                <div class="option-name">Chocolates</div>
+                                <div class="option-price">+₹200</div>
+                            </div>
+                            <div class="option-card" onclick="toggleAddon('flowers', 300, this)" data-testid="addon-flowers">
+                                <div class="option-icon">💐</div>
+                                <div class="option-name">Flowers</div>
+                                <div class="option-price">+₹300</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="option-group">
+                        <label>Special Packaging:</label>
+                        <div class="option-grid">
+                            <div class="option-card selected" onclick="selectPackaging('standard', 0, this)" data-testid="packaging-standard">
+                                <div class="option-icon">📦</div>
+                                <div class="option-name">Standard Box</div>
+                                <div class="option-price">Free</div>
+                            </div>
+                            <div class="option-card" onclick="selectPackaging('premium', 150, this)" data-testid="packaging-premium">
+                                <div class="option-icon">🎁</div>
+                                <div class="option-name">Premium Gift Box</div>
+                                <div class="option-price">+₹150</div>
+                            </div>
+                            <div class="option-card" onclick="selectPackaging('eco', 100, this)" data-testid="packaging-eco">
+                                <div class="option-icon">♻️</div>
+                                <div class="option-name">Eco-Friendly</div>
+                                <div class="option-price">+₹100</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn btn-secondary" onclick="prevStep()" data-testid="prev-step-4">Previous</button>
+                        <button class="btn btn-primary" onclick="nextStep()" data-testid="next-step-4">Next Step</button>
+                    </div>
+                </div>
+
+                <!-- Step 5: Review & Order -->
+                <div class="step-content" data-step="5">
+                    <h2 class="step-title">📋 Review & Place Order</h2>
+                    
+                    <div class="option-group">
+                        <label>Order Summary:</label>
+                        <div id="orderSummary" style="background: var(--light-bg); padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem;">
+                            <!-- Will be populated by JS -->
+                        </div>
+                    </div>
+
+                    <div class="option-group">
+                        <label>Delivery Details:</label>
+                        <div class="input-group">
+                            <input type="text" id="customerName" placeholder="Full Name" required data-testid="customer-name-input">
+                        </div>
+                        <div class="input-group">
+                            <input type="tel" id="customerPhone" placeholder="Phone Number" required data-testid="customer-phone-input">
+                        </div>
+                        <div class="input-group">
+                            <textarea id="deliveryAddress" placeholder="Delivery Address" required data-testid="delivery-address-input"></textarea>
+                        </div>
+                        <div class="input-group">
+                            <input type="date" id="deliveryDate" required data-testid="delivery-date-input">
+                        </div>
+                        <div class="input-group">
+                            <select id="deliveryTime" required data-testid="delivery-time-select">
+                                <option value="">Select Delivery Time</option>
+                                <option value="morning">Morning (9 AM - 12 PM)</option>
+                                <option value="afternoon">Afternoon (12 PM - 4 PM)</option>
+                                <option value="evening">Evening (4 PM - 8 PM)</option>
+                                <option value="midnight">Midnight Delivery (12 AM)</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <textarea id="specialInstructions" placeholder="Special Instructions (Optional)" data-testid="special-instructions-input"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn btn-secondary" onclick="prevStep()" data-testid="prev-step-5">Previous</button>
+                        <button class="btn btn-primary" onclick="addToCart()" data-testid="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h3>Custom Designs</h3>
+                <p>Create unique cakes tailored to your preferences with unlimited customization options</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🍰</div>
+                <h3>Premium Flavors</h3>
+                <p>Choose from a wide variety of delicious flavors made with the finest ingredients</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🚚</div>
+                <h3>Same-Day Delivery</h3>
+                <p>Get your custom cakes delivered fresh on the same day across major cities</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💯</div>
+                <h3>Quality Guaranteed</h3>
+                <p>100% satisfaction guaranteed with fresh ingredients and expert bakers</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div class="modal" id="cartModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🛒 Your Cart</h2>
+                <button class="close-btn" onclick="toggleCart()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="cartItems">
+                    <div class="empty-cart">
+                        <div class="empty-cart-icon">🛒</div>
+                        <h3>Your cart is empty</h3>
+                        <p>Start customizing your dream cake!</p>
+                    </div>
+                </div>
+                <div id="cartTotal" style="display: none;">
+                    <div class="cart-total">
+                        <h3>Total Amount:</h3>
+                        <div class="total-price" id="cartTotalPrice">₹0</div>
+                    </div>
+                    <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;" onclick="proceedToCheckout()" data-testid="proceed-checkout-btn">
+                        Proceed to Checkout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Bakenovation</h3>
+                <p>Your trusted partner for custom cakes and celebrations. We bring your sweet dreams to life with creativity and quality.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Custom Cakes</a></li>
+                    <li><a href="#">Gallery</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li>📞 +91 98765 43210</li>
+                    <li>📧 info@bakenovation.com</li>
+                    <li>📍 123 Baker Street, New Delhi</li>
+                    <li>🕒 Mon-Sun: 8 AM - 10 PM</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Pinterest</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Bakenovation. All Rights Reserved. | Made with ❤️ for Cake Lovers</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // State Management
+        let currentStep = 1;
+        let cart = [];
+        let currentCake = {
+            shape: 'square',
+            size: '1kg',
+            basePrice: 500,
+            flavor: 'chocolate',
+            flavorPrice: 0,
+            flavorColor: '#8B4513',
+            type: null,
+            typePrice: 0,
+            theme: null,
+            themePrice: 0,
+            themeIcon: '',
+            message: '',
+            photo: null,
+            addons: [],
+            packaging: 'standard',
+            packagingPrice: 0,
+            shapePrice: 0
+        };
+
+        // Initialize
+        function init() {
+            updatePrice();
+            updateCakePreview();
+            setMinDate();
+        }
+
+        function setMinDate() {
+            const today = new Date();
+            const tomorrow = new Date(today);
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            const dateInput = document.getElementById('deliveryDate');
+            if (dateInput) {
+                dateInput.min = tomorrow.toISOString().split('T')[0];
+            }
+        }
+
+        // Navigation
+        function startCustomization() {
+            document.getElementById('heroSection').style.display = 'none';
+            document.getElementById('customizerSection').classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function nextStep() {
+            if (currentStep < 5) {
+                // Validate current step
+                if (currentStep === 5) {
+                    if (!validateOrderForm()) return;
+                }
+                
+                updateStepStatus(currentStep, 'completed');
+                currentStep++;
+                updateStepStatus(currentStep, 'active');
+                showStep(currentStep);
+                
+                if (currentStep === 5) {
+                    generateOrderSummary();
+                }
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 1) {
+                updateStepStatus(currentStep, '');
+                currentStep--;
+                showStep(currentStep);
+            }
+        }
+
+        function showStep(step) {
+            document.querySelectorAll('.step-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.querySelector(`.step-content[data-step="${step}"]`).classList.add('active');
+        }
+
+        function updateStepStatus(step, status) {
+            const stepElement = document.querySelector(`.progress-step[data-step="${step}"]`);
+            stepElement.classList.remove('active', 'completed');
+            if (status) {
+                stepElement.classList.add(status);
+            }
+        }
+
+        // Selection Functions
+        function selectShape(shape, element) {
+            currentCake.shape = shape;
+            currentCake.shapePrice = shape === 'heart' ? 200 : 0;
+            updateSelection(element);
+            updateCakePreview();
+            updatePrice();
+        }
+
+        function selectSize(size, price, element) {
+            currentCake.size = size;
+            currentCake.basePrice = price;
+            updateSelection(element);
+            updatePrice();
+        }
+
+        function selectFlavor(flavor, price, color, element) {
+            currentCake.flavor = flavor;
+            currentCake.flavorPrice = price;
+            currentCake.flavorColor = color;
+            updateSelection(element);
+            updateCakePreview();
+            updatePrice();
+        }
+
+        function selectType(type, price, element) {
+            if (currentCake.type === type) {
+                currentCake.type = null;
+                currentCake.typePrice = 0;
+                element.classList.remove('selected');
+            } else {
+                document.querySelectorAll('[data-step="2"] .option-grid:last-child .option-card').forEach(card => {
+                    card.classList.remove('selected');
+                });
+                currentCake.type = type;
+                currentCake.typePrice = price;
+                element.classList.add('selected');
+            }
+            updatePrice();
+        }
+
+        function selectTheme(theme, icon, element) {
+            const prices = { birthday: 100, wedding: 300, anniversary: 150, 'baby-shower': 120 };
+            if (currentCake.theme === theme) {
+                currentCake.theme = null;
+                currentCake.themePrice = 0;
+                currentCake.themeIcon = '';
+                element.classList.remove('selected');
+            } else {
+                document.querySelectorAll('[data-step="3"] .option-grid:first-child .option-card').forEach(card => {
+                    card.classList.remove('selected');
+                });
+                currentCake.theme = theme;
+                currentCake.themePrice = prices[theme];
+                currentCake.themeIcon = icon;
+                element.classList.add('selected');
+            }
+            updateCakePreview();
+            updatePrice();
+        }
+
+        function toggleAddon(addon, price, element) {
+            const index = currentCake.addons.findIndex(a => a.name === addon);
+            if (index > -1) {
+                currentCake.addons.splice(index, 1);
+                element.classList.remove('selected');
+            } else {
+                currentCake.addons.push({ name: addon, price: price });
+                element.classList.add('selected');
+            }
+            updatePrice();
+        }
+
+        function selectPackaging(type, price, element) {
+            currentCake.packaging = type;
+            currentCake.packagingPrice = price;
+            updateSelection(element);
+            updatePrice();
+        }
+
+        function updateSelection(element) {
+            const parent = element.parentElement;
+            parent.querySelectorAll('.option-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            element.classList.add('selected');
+        }
+
+        // Preview Updates
+        function updateCakePreview() {
+            const cakeShape = document.getElementById('cakeShape');
+            cakeShape.className = `cake-shape ${currentCake.shape}`;
+            
+            // Update color based on flavor
+            if (currentCake.shape === 'heart') {
+                cakeShape.style.background = `linear-gradient(135deg, ${currentCake.flavorColor} 0%, ${adjustColor(currentCake.flavorColor, -20)} 100%)`;
+                const before = window.getComputedStyle(cakeShape, '::before');
+                const after = window.getComputedStyle(cakeShape, '::after');
+            } else {
+                cakeShape.style.background = `linear-gradient(135deg, ${currentCake.flavorColor} 0%, ${adjustColor(currentCake.flavorColor, -20)} 100%)`;
+            }
+            
+            // Update decorations
+            document.getElementById('cakeDecorations').textContent = currentCake.themeIcon;
+        }
+
+        function adjustColor(color, percent) {
+            const num = parseInt(color.replace("#",""), 16);
+            const amt = Math.round(2.55 * percent);
+            const R = (num >> 16) + amt;
+            const G = (num >> 8 & 0x00FF) + amt;
+            const B = (num & 0x0000FF) + amt;
+            return "#" + (0x1000000 + (R<255?R<1?0:R:255)*0x10000 +
+                (G<255?G<1?0:G:255)*0x100 + (B<255?B<1?0:B:255))
+                .toString(16).slice(1);
+        }
+
+        function updateCakeText() {
+            const message = document.getElementById('cakeMessage').value;
+            currentCake.message = message;
+            document.getElementById('cakeText').textContent = message;
+        }
+
+        function handlePhotoUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                if (file.size > 5 * 1024 * 1024) {
+                    alert('File size must be less than 5MB');
+                    return;
+                }
+                
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    currentCake.photo = e.target.result;
+                    const preview = document.getElementById('photoPreview');
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                    document.getElementById('cakeShape').style.opacity = '0.3';
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Price Calculation
+        function updatePrice() {
+            const addonTotal = currentCake.addons.reduce((sum, addon) => sum + addon.price, 0);
+            const total = currentCake.basePrice + 
+                         currentCake.shapePrice +
+                         currentCake.flavorPrice + 
+                         currentCake.typePrice + 
+                         currentCake.themePrice + 
+                         addonTotal + 
+                         currentCake.packagingPrice;
+            
+            document.getElementById('totalPrice').textContent = `₹${total}`;
+        }
+
+        function getCurrentPrice() {
+            const addonTotal = currentCake.addons.reduce((sum, addon) => sum + addon.price, 0);
+            return currentCake.basePrice + 
+                   currentCake.shapePrice +
+                   currentCake.flavorPrice + 
+                   currentCake.typePrice + 
+                   currentCake.themePrice + 
+                   addonTotal + 
+                   currentCake.packagingPrice;
+        }
+
+        // Order Summary
+        function generateOrderSummary() {
+            const summary = `
+                <div style="display: grid; gap: 0.8rem;">
+                    <div style="display: flex; justify-content: space-between;">
+                        <strong>Shape:</strong> <span>${capitalize(currentCake.shape)}</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <strong>Size:</strong> <span>${currentCake.size}</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <strong>Flavor:</strong> <span>${capitalize(currentCake.flavor)}</span>
+                    </div>
+                    ${currentCake.type ? `<div style="display: flex; justify-content: space-between;">
+                        <strong>Type:</strong> <span>${capitalize(currentCake.type)}</span>
+                    </div>` : ''}
+                    ${currentCake.theme ? `<div style="display: flex; justify-content: space-between;">
+                        <strong>Theme:</strong> <span>${capitalize(currentCake.theme)}</span>
+                    </div>` : ''}
+                    ${currentCake.message ? `<div style="display: flex; justify-content: space-between;">
+                        <strong>Message:</strong> <span>"${currentCake.message}"</span>
+                    </div>` : ''}
+                    ${currentCake.photo ? `<div style="display: flex; justify-content: space-between;">
+                        <strong>Photo Cake:</strong> <span>Yes</span>
+                    </div>` : ''}
+                    ${currentCake.addons.length > 0 ? `<div style="display: flex; justify-content: space-between;">
+                        <strong>Add-ons:</strong> <span>${currentCake.addons.map(a => capitalize(a.name)).join(', ')}</span>
+                    </div>` : ''}
+                    <div style="display: flex; justify-content: space-between;">
+                        <strong>Packaging:</strong> <span>${capitalize(currentCake.packaging)}</span>
+                    </div>
+                    <div style="border-top: 2px solid var(--border-color); padding-top: 0.8rem; margin-top: 0.5rem; display: flex; justify-content: space-between; font-size: 1.2rem;">
+                        <strong>Total Price:</strong> <strong style="color: var(--primary-color);">₹${getCurrentPrice()}</strong>
+                    </div>
+                </div>
+            `;
+            document.getElementById('orderSummary').innerHTML = summary;
+        }
+
+        function capitalize(str) {
+            return str.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+        }
+
+        // Cart Functions
+        function addToCart() {
+            if (!validateOrderForm()) {
+                alert('Please fill in all required delivery details!');
+                return;
+            }
+
+            const orderDetails = {
+                ...currentCake,
+                price: getCurrentPrice(),
+                customerName: document.getElementById('customerName').value,
+                customerPhone: document.getElementById('customerPhone').value,
+                deliveryAddress: document.getElementById('deliveryAddress').value,
+                deliveryDate: document.getElementById('deliveryDate').value,
+                deliveryTime: document.getElementById('deliveryTime').value,
+                specialInstructions: document.getElementById('specialInstructions').value,
+                orderId: 'ORD' + Date.now()
+            };
+
+            cart.push(orderDetails);
+            updateCartDisplay();
+            
+            // Show success message
+            alert('🎉 Cake added to cart successfully!');
+            
+            // Reset customizer
+            resetCustomizer();
+        }
+
+        function validateOrderForm() {
+            const name = document.getElementById('customerName').value.trim();
+            const phone = document.getElementById('customerPhone').value.trim();
+            const address = document.getElementById('deliveryAddress').value.trim();
+            const date = document.getElementById('deliveryDate').value;
+            const time = document.getElementById('deliveryTime').value;
+            
+            return name && phone && address && date && time;
+        }
+
+        function resetCustomizer() {
+            currentStep = 1;
+            currentCake = {
+                shape: 'square',
+                size: '1kg',
+                basePrice: 500,
+                flavor: 'chocolate',
+                flavorPrice: 0,
+                flavorColor: '#8B4513',
+                type: null,
+                typePrice: 0,
+                theme: null,
+                themePrice: 0,
+                themeIcon: '',
+                message: '',
+                photo: null,
+                addons: [],
+                packaging: 'standard',
+                packagingPrice: 0,
+                shapePrice: 0
+            };
+            
+            // Reset form
+            document.getElementById('cakeMessage').value = '';
+            document.getElementById('photoUpload').value = '';
+            document.getElementById('photoPreview').style.display = 'none';
+            document.getElementById('cakeShape').style.opacity = '1';
+            document.getElementById('customerName').value = '';
+            document.getElementById('customerPhone').value = '';
+            document.getElementById('deliveryAddress').value = '';
+            document.getElementById('deliveryDate').value = '';
+            document.getElementById('deliveryTime').value = '';
+            document.getElementById('specialInstructions').value = '';
+            
+            // Reset selections
+            document.querySelectorAll('.option-card.selected').forEach(card => {
+                card.classList.remove('selected');
+            });
+            
+            // Reset to step 1
+            document.querySelectorAll('.progress-step').forEach(step => {
+                step.classList.remove('active', 'completed');
+            });
+            document.querySelector('.progress-step[data-step="1"]').classList.add('active');
+            showStep(1);
+            
+            updateCakePreview();
+            updatePrice();
+        }
+
+        function toggleCart() {
+            document.getElementById('cartModal').classList.toggle('active');
+        }
+
+        function updateCartDisplay() {
+            const cartItemsContainer = document.getElementById('cartItems');
+            const cartTotalContainer = document.getElementById('cartTotal');
+            
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = `
+                    <div class="empty-cart">
+                        <div class="empty-cart-icon">🛒</div>
+                        <h3>Your cart is empty</h3>
+                        <p>Start customizing your dream cake!</p>
+                    </div>
+                `;
+                cartTotalContainer.style.display = 'none';
+            } else {
+                let cartHTML = '';
+                let total = 0;
+                
+                cart.forEach((item, index) => {
+                    total += item.price;
+                    cartHTML += `
+                        <div class="cart-item">
+                            <div class="cart-item-details">
+                                <h4>Custom Cake #${index + 1}</h4>
+                                <p>${capitalize(item.shape)} | ${item.size} | ${capitalize(item.flavor)}</p>
+                                <p><strong>Delivery:</strong> ${new Date(item.deliveryDate).toLocaleDateString()} (${capitalize(item.deliveryTime)})</p>
+                                <p><strong>For:</strong> ${item.customerName}</p>
+                            </div>
+                            <div class="cart-item-price">₹${item.price}</div>
+                        </div>
+                    `;
+                });
+                
+                cartItemsContainer.innerHTML = cartHTML;
+                cartTotalContainer.style.display = 'block';
+                document.getElementById('cartTotalPrice').textContent = `₹${total}`;
+            }
+            
+            document.getElementById('cartCount').textContent = cart.length;
+        }
+
+        function proceedToCheckout() {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+            
+            // Show order confirmation
+            const totalAmount = cart.reduce((sum, item) => sum + item.price, 0);
+            const orderNumbers = cart.map(item => item.orderId).join(', ');
+            
+            alert(`🎉 Order Confirmed!\n\nOrder IDs: ${orderNumbers}\nTotal Amount: ₹${totalAmount}\n\nThank you for choosing Bakenovation! We'll deliver your custom cakes fresh and on time.\n\nYou'll receive a confirmation email shortly.`);
+            
+            // Clear cart
+            cart = [];
+            updateCartDisplay();
+            toggleCart();
+            
+            // Show hero section again
+            document.getElementById('heroSection').style.display = 'flex';
+            document.getElementById('customizerSection').classList.remove('active');
+            window.scrollTo(0, 0);
+        }
+
+        // Initialize on load
+        window.onload = init;
+    </script>
 </body>
 </html>
