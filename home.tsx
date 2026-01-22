@@ -1,0 +1,19 @@
+import { Navbar } from "@/components/Navbar";
+import { Hero } from "@/components/Hero";
+import { CakeCustomizer } from "@/components/CakeCustomizer";
+import { SignatureCollection } from "@/components/SignatureCollection";
+import { ContactSection } from "@/components/ContactSection";
+import { Footer } from "@/components/Footer";
+
+export default function Home() {
+  return (
+    <div className="min-h-screen">
+      <Navbar />
+      <Hero />
+      <SignatureCollection />
+      <CakeCustomizer />
+      <ContactSection />
+      <Footer />
+    </div>
+  );
+}
